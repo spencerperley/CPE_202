@@ -7,7 +7,7 @@ class Location:
         self.lat = lat      # latitude in degrees (-90 to 90)
         self.lon = lon      # longitude in degrees (-180 to 180)
         
-    def __val(self) -> tuple: # value private method for use in repr and eq
+    def __val(self) -> tuple: # value method for use in repr and eq
         return (self.name, self.lat, self.lon)
         
     def __repr__(self) -> str:
@@ -22,6 +22,8 @@ def main():
     loc3 = Location("SLO", 35.3, -120.7)
     loc4 = loc1
 
+
+    
     print("Location 1:",loc1)
     print("Location 2:",loc2)
     print("Location 3:",loc3)
@@ -39,3 +41,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
