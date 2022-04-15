@@ -1,3 +1,2 @@
-a =  
-a 
-print (a)
+a =  "1.45"
+print (float(a))
