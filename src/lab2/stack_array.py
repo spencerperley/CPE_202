@@ -20,6 +20,7 @@ class Stack:
         return ((type(other) == Stack)
             and self.capacity == other.capacity
             and self.items[:self.num_items] == other.items[:other.num_items]
+            
             )
 
     def __repr__(self):
@@ -51,6 +52,7 @@ class Stack:
            MUST have O(1) performance'''
         if self.is_empty():
             raise IndexError
+
         self.num_items -= 1
         return self.items[self.num_items]
         
@@ -61,7 +63,7 @@ class Stack:
            MUST have O(1) performance'''
         if self.is_empty():
             raise IndexError
-        return self.items[self.num_items]
+        return self.items[self.num_items-1]
     
         
 

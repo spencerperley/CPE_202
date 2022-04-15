@@ -31,5 +31,40 @@ class TestLab2(unittest.TestCase):
 
 # WRITE TESTS FOR STACK OPERATIONS - PUSH, POP, PEEK, etc.
 
+    def test_push_and_empty(self):
+        init_stack = Stack(10)
+        init_stack.push(3)
+        self.assertFalse(init_stack.is_empty())
+        self.assertEqual(init_stack.peek(),3)
+
+    def test_pop(self):
+        ints = Stack(10)
+        ints.push(3)
+        self.assertEqual(3,ints.pop())
+        ints = Stack(10)
+        ints.push(3)
+        ints.pop()
+        self.assertRaises(IndexError, ints.pop)
+
+    def testSize(self):
+        ints = Stack(10)
+        ints.push(3)
+        ints.pop()
+        ints.push(2974)
+        ints.push(3)
+        self.assertEqual(ints.size(),2)
+    
+    def testCapacity(self):
+        ints = Stack(3)
+        ints.push(3)
+        ints.push(5)
+        ints.push(2)
+        self.assertRaises(IndexError,ints.push,2)
+        ints.pop()
+        ints.push(2)
+        self.assertEqual(3,ints.size())
+        
+        
+
 if __name__ == '__main__': 
     unittest.main()
