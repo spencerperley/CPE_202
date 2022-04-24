@@ -1,3 +1,4 @@
+from mimetypes import init
 import unittest
 from stack_nodelist import *
         
@@ -50,7 +51,34 @@ class TestLab2(unittest.TestCase):
         stack = Stack(init_stack)
         self.assertEqual(stack.__repr__(), "Stack(Node(2, Node(1, None)))")
 
+    def test_push_and_empty(self): # same tests as array implementation as the same functionality is needed
+        init_stack = Stack()
+        init_stack.push(3)
+        self.assertFalse(init_stack.is_empty())
+        self.assertEqual(init_stack.top.value,init_stack.peek())
+        self.assertEqual(init_stack.top.value,3)
+
+    def test_pop(self):
+        ints = Stack()
+        ints.push(3)
+        self.assertEqual(ints.top.value,ints.pop())
+        ints = Stack()
+        ints.push(3)
+        ints.pop()
+        self.assertRaises(IndexError, ints.pop)
+    def testSize(self):
+        ints = Stack()
+        ints.push(3)
+        ints.pop()
+        ints.push(2974)
+        ints.push(3)
+        self.assertEqual(ints.size(),2)
+        
+
+
+
 # WRITE TESTS FOR STACK OPERATIONS - PUSH, POP, PEEK, etc.
+
 
 if __name__ == '__main__': 
     unittest.main()

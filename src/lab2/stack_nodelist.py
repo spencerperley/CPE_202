@@ -37,24 +37,42 @@ class Stack:
     def is_empty(self):
         '''Returns True if the stack is empty, and False otherwise
            MUST have O(1) performance'''
+        return self.top == None
 
     def push(self, item):
         '''Pushes item on stack.
            MUST have O(1) performance'''
+        self.top = Node(item,self.top)
+        self.num_items += 1
+
+        
+
 
     def pop(self):
         '''If stack is not empty, pops item from stack and returns item.
            If stack is empty when pop is attempted, raises IndexError
            MUST have O(1) performance'''
+        if self.is_empty():
+            raise IndexError
+        temp = self.top.value
+        self.top = self.top.rest
+        self.num_items -= 1
+        return temp
+
 
     def peek(self):
         '''If stack is not empty, returns next item to be popped (but does not remove the item)
            If stack is empty, raises IndexError
            MUST have O(1) performance'''
+        if self.is_empty():
+            raise IndexError
+        return self.top.value
+
 
     def size(self):
         '''Returns the number of elements currently in the stack, not the capacity
            MUST have O(1) performance'''
+        return self.num_items
 
 if __name__ == "__main__":
 
