@@ -1,5 +1,9 @@
+
+
+
 class TreeNode:
     def __init__(self,key):
+        self.level = 0
         self.parrent = None
         self.left = None
         self.right = None
@@ -7,52 +11,55 @@ class TreeNode:
         self.data = None
         self.size = 1
 
-    def __next__(self):
-        if not self.left == None:
+    def __repr__(self):
+        return f"[{self.key}, {self.level}]"
+
+
+    def director(self,leftDom):
+        if leftDom:
             return self.left
-        elif not self.right == None:
-            return self.right
         else:
-            return self.parrent
+            return self.right
 
-    def __iter__(self):
-        ptr = self
-        while not ptr == None:
-            yield ptr
-            ptr = ptr.__next__()
+    def inorder(self, left = True):
+        if not self.director(left) == None:
+            yield from self.director(left).inorder(left)
 
+        if not self.director(not left) == None:
+            yield self
+            yield from self.director(not left).inorder(left)
+        else:
+            yield self
 
-    def inOrder(self):
-        ptr = self
-        for i in range(self.size):
-            yield 
-            ptr = ptr.
-        pass
-
-    def preOrder(self):
-        pass
-
-    def postOrder(self):
-        pass
-        
-    
-
-
-    def insert(self,key):
+    def insert(self,key, depth = 1):
         if key > self.key:
             if self.right == None:
                 self.right = TreeNode(key)
+                self.right.level=depth
                 return
             else:
-                self.right.insert()
+                self.right.insert(key,depth+1)
         else:
             if self.left == None:
                 self.left = TreeNode(key)
+                self.left.level=depth
                 return
             else:
-                self.left.insert()
+                self.left.insert(key,depth+1)
 
-    def print_levels(self):
+    def find_min(self):
+        return next(self.inorder()).key
+    def find_max(self):
+        return next(self.inorder(False)).key
+
+    def inorder_print_tree(self):
+        for node in self.inorder():
+            print(node.key, end = " ")
+
+    def print_levels(self,left = True):
+        for node in self.inorder(left):
+            print(f"[{node.key}, {node.level}]", end = " ")
+        print()
 
 
             
@@ -61,3 +68,15 @@ class BinarySearchTree:
     
     def insert(self,newKey):
         pass
+
+a=TreeNode(5)
+a.insert(1)
+a.insert(6)
+a.insert(5)
+a.insert(7)
+a.insert(8)
+a.print_levels()
+a.print_levels(False)
+print(a.find_min())
+print(a.find_max())
+
