@@ -29,5 +29,9 @@ class TestRecList(unittest.TestCase):
         strlist = Node(None,Node("42", None))
         self.assertEqual(split_list(strlist),(Node(None,None),Node(None,None),Node(None,Node("42", None))))
 
+    def test_split2(self):
+        strlist = Node("Yellow", Node("abc", Node("$7.25", Node("lime", Node("42",Node("Ethan", None))))))
+        self.assertEqual(split_list(strlist),(Node('abc', Node("Ethan", None)),Node('Yellow', Node("lime", None)), Node('$7.25', Node("42", None))))
+
 if __name__ == "__main__":
         unittest.main()

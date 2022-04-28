@@ -7,11 +7,13 @@ def isNum(s : str) -> bool:
     meaning it has only one '.' and has only digets other than that"""
     """Signature: takes a string and returns true if it is a valid number """
     dotfirst = True
+    First = True
     for i in s:
-        if not (i.isdigit() or (i == "." and dotfirst)):
+        if not (i.isdigit() or (i == "." and dotfirst) or (i == "-" and First)):
             return False
         if (i == "." and dotfirst):
             dotfirst = False
+        First == False
 
     return True
 
@@ -35,7 +37,7 @@ def infix_to_postfix(infixexpr : str) -> str:
         """Signature:  takes a valid operator as a string and returns its order of operation rank as a int with special classification for parrenthasis"""
         if oper in "+-":
             return 0
-        elif oper in "*-":
+        elif oper in "*/": # oops typo was a minus
             return 1
         elif oper in "^":
             return 2
