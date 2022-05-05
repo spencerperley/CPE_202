@@ -31,15 +31,6 @@ class HuffmanNode:
             yield prevCode , self.char_ascii
 
 
-            
-
-        
-
-
-
-
-                
-
 def comes_before(a, b):
     """Returns True if node a comes before node b, False otherwise"""
     if a.freq < b.freq:
@@ -152,7 +143,6 @@ def huffman_encode(in_file, out_file):
                 file.write(result)
 
 
-huffman_encode("testEmpty.txt",'testoutmulti.txt')
 
 
 
