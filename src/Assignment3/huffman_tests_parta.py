@@ -7,6 +7,10 @@ class TestList(unittest.TestCase):
         freqlist	= cnt_freq("file2.txt")
         anslist = [2, 4, 8, 16, 0, 2, 0] 
         self.assertListEqual(freqlist[97:104], anslist)
+
+    # def testAllOneChar(self):
+    #     huffman_encode()
+
         
 
     def test_create_huff_tree(self):
@@ -37,6 +41,18 @@ class TestList(unittest.TestCase):
         huffman_encode("file1.txt", "file1_out.txt")
         # capture errors by comparing your encoded file with a *known* solution file
         self.assertTrue(compare_files("file1_out.txt", "file1_soln.txt"))
+
+        huffman_encode("multiline.txt", "file1_out.txt")
+        # capture errors by comparing your encoded file with a *known* solution file
+        self.assertTrue(compare_files("file1_out.txt", "multiline_soln.txt"))
+
+        huffman_encode("onechar.txt", "file1_out.txt")
+        # capture errors by comparing your encoded file with a *known* solution file
+        self.assertTrue(compare_files("file1_out.txt", "onecharsoln.txt"))
+
+        huffman_encode("epty.txt", "file1_out.txt")
+        # capture errors by comparing your encoded file with a *known* solution file
+        self.assertTrue(compare_files("file1_out.txt", "eptysoln.txt"))
 
 # Compare files - takes care of CR/LF, LF issues
 def compare_files(file1,file2):
