@@ -1,4 +1,4 @@
-a = [1,2,3,5,6]
+import random
 
-print(a.insert(min(enumerate(a), key = lambda a: a[1] < 4 )[0],4))
-print(a)
+for i in range((7//2),0,-1):
+    print(i)
