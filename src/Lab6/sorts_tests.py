@@ -3,6 +3,8 @@ from sorts import *
 
 class TestLab6(unittest.TestCase):
 
+    def testSortsagainstrand(self):
+        pass
     def test_01_selection(self):
         nums = [23, 10, 49, 12]
         comps = selection_sort(nums)

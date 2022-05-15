@@ -1,4 +1,3 @@
-a = [1,2,3,5,6]
+a = None
 
-print(a.insert(min(enumerate(a), key = lambda a: a[1] < 4 )[0],4))
-print(a)
+print(str(a))
